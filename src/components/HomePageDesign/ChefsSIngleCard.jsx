@@ -2,7 +2,7 @@ import React from 'react';
 
 const ChefsSIngleCard = ({chefscards}) => {
       
-    console.log(chefscards)
+    // console.log(chefscards)
     return (
         <div>
 

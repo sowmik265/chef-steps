@@ -14,7 +14,7 @@ const Login = () => {
 
 
 
-                    <form  className="mt-6">
+                    <form className="mt-6">
                         <div className="mb-2">
                             <label
                                 for="email"
@@ -23,6 +23,7 @@ const Login = () => {
                                 Email
                             </label>
                             <input
+                                name='email'
                                 type="email"
                                 placeholder='Your email address'
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -36,6 +37,7 @@ const Login = () => {
                                 Password
                             </label>
                             <input
+                                name='password'
                                 type="password"
                                 placeholder='Your password'
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -97,14 +99,14 @@ const Login = () => {
                         {" "}
                         Don't have an account?{" "}
                         <NavLink to='/register'>
-                        <a
-                            href="#"
-                            className="font-medium text-purple-600 hover:underline"
-                        >
-                            Sign up
-                        </a>
+                            <a
+                                href="#"
+                                className="font-medium text-purple-600 hover:underline"
+                            >
+                                Sign up
+                            </a>
                         </NavLink>
-                        
+
                     </p>
                 </div>
             </div>

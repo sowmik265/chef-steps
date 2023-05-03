@@ -2,6 +2,18 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Register = () => {
+
+    const handleUserRegister = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(name,email,password);
+
+    }
+
     return (
         <div>
             <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
@@ -10,7 +22,7 @@ const Register = () => {
                         Register
                     </h1>
 
-                    <form className="mt-6">
+                    <form onSubmit={handleUserRegister} className="mt-6">
                         <div className="mb-2">
                             <label
                                 for="name"
@@ -19,6 +31,7 @@ const Register = () => {
                                 Name
                             </label>
                             <input
+                                name='name'
                                 type="text"
                                 placeholder='Your name'
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -32,6 +45,7 @@ const Register = () => {
                                 Email
                             </label>
                             <input
+                                name='email'
                                 type="email"
                                 placeholder='Your email address'
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -45,6 +59,7 @@ const Register = () => {
                                 Password
                             </label>
                             <input
+                                name='password'
                                 type="password"
                                 placeholder='Your password'
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -66,11 +81,11 @@ const Register = () => {
                         Already have an account?{" "}
                         <span>
                             <NavLink to='/login'>
-                            <a className="text-purple-600 hover:underline" href="#">
-                                Log in
-                            </a>
+                                <a className="text-purple-600 hover:underline" href="#">
+                                    Log in
+                                </a>
                             </NavLink>
-                            
+
                         </span>
                     </div>
                     <div className="flex items-center w-full my-4">
