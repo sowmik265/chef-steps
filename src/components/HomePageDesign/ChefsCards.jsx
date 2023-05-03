@@ -7,11 +7,15 @@ const ChefsCards = () => {
     // console.log(chefsDetails)
     return (
         <div>
-           {
-            chefsDetails.map( chefscards => 
-                <ChefsSIngleCard key={chefscards.id} chefscards={chefscards}> </ChefsSIngleCard>
-                )
-           }
+            <p className='font-extrabold  text-5xl text-yellow-400 drop-shadow-2xl text-center mt-10 mb-10'>Our Experienced Chefs !!</p>
+            <div className='flex w-full h-full'>
+                {
+                    chefsDetails.map(chefscards =>
+                        <ChefsSIngleCard key={chefscards.id} chefscards={chefscards}> </ChefsSIngleCard>
+                    )
+                }
+            </div>
+
         </div>
     );
 };

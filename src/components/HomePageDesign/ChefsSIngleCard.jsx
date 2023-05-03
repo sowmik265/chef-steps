@@ -4,26 +4,35 @@ import { Link } from 'react-router-dom';
 
 const ChefsSIngleCard = ({ chefscards }) => {
 
-    const {chefPicture,chefName,yearsOfExperience,numberOfRecipes,likes,id} = chefscards ;
-    // console.log(chefscards)
+    const { chefPicture, chefName, yearsOfExperience, numberOfRecipes, likes, id } = chefscards;
+
     return (
-        <div className='flex flex-wrap justify-center items-center h-full'>
 
-            <div className="card lg:card-side bg-base-100 shadow-xl w-full md:w-3/5 px-2 py-4 my-2">
-                <figure><img className="w-96 h-96" src={chefPicture} alt="Album" /></figure>
-                <div className="card-body bg-yellow-300">
-                    <h2 className="card-title">{chefName}</h2>
-                    <p><span className='text-xl font-extrabold text-violet-900'>{yearsOfExperience} </span>years of experience!!!</p>
-                    <div>
+        <div className=''>
+            
+            <div className=' m-2 col-span-2'>
+                <div className="card w-full bg-base-100 shadow-xl">
+                    <figure className="px-10 pt-10 h-96">
+                        <img src={chefPicture} alt="Shoes" className="rounded-xl" />
+                    </figure>
+                    <div className="card-body items-center text-center">
+                        <h2 className="card-title">{chefName}</h2>
+                        <div>
+                            <p>Experience : {yearsOfExperience} years !</p>
+                            <p> {numberOfRecipes} recipes !!</p>
+                            <p>{likes} likes</p>
+                        </div>
 
-                    </div>
-                    <div className="card-actions justify-end">
-                        <Link to={`/chef-details/${id}`}><button className="btn btn-primary">Listen</button></Link>
+                        <div className="card-actions">
+                            <Link to={`/chef-details/${id}`}><button className="btn btn-primary">View details</button></Link>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+
+
     );
 };
 
