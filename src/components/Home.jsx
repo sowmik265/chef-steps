@@ -9,11 +9,6 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Carousel></Carousel>
-
-
-
-
-
             <ChefsCards></ChefsCards>
 
 
