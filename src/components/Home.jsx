@@ -9,12 +9,12 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Carousel></Carousel>
-            
 
 
 
 
-            {/* <ChefsCards></ChefsCards> */}
+
+            <ChefsCards></ChefsCards>
 
 
             {/* <TextImg></TextImg> */}
