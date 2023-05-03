@@ -8,14 +8,15 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-
+            <Carousel></Carousel>
+            
 
 
 
 
             {/* <ChefsCards></ChefsCards> */}
 
-            {/* <Carousel></Carousel> */}
+
             {/* <TextImg></TextImg> */}
 
         </div>
