@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const ChefsSIngleCard = ({ chefscards }) => {
 
-    const {chefPicture,chefName,yearsOfExperience,numberOfRecipes,likes} = chefscards ;
+    const {chefPicture,chefName,yearsOfExperience,numberOfRecipes,likes,id} = chefscards ;
     // console.log(chefscards)
     return (
         <div className='flex flex-wrap justify-center items-center h-full'>
@@ -17,7 +18,7 @@ const ChefsSIngleCard = ({ chefscards }) => {
 
                     </div>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Listen</button>
+                        <Link to={`/chef-details/${id}`}><button className="btn btn-primary">Listen</button></Link>
                     </div>
                 </div>
             </div>

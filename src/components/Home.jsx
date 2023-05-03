@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from './HomePageDesign/Carousel';
-import TextImg from './HomePageDesign/textImg';
+// import TextImg from './HomePageDesign/textImg';
 import ChefsCards from './HomePageDesign/ChefsCards';
 import Banner from './HomePageDesign/Banner';
 
