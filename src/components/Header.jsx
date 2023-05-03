@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import ActiveLink from './ActiveRoutes/ActiveLink';
+import { AuthContext } from '../providers/AuthProvider';
 
 const Header = () => {
+    const { user } = useContext(AuthContext)
+
+    // console.log(user)
     return (
         <div>
             <div className="navbar bg-yellow-400">
@@ -31,8 +35,10 @@ const Header = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li className='font-extrabold'><ActiveLink to='/'>Home</ActiveLink></li>
                         <li className='font-extrabold'><ActiveLink to='/blog'>Blog</ActiveLink></li>
-                        <li className='font-extrabold'><ActiveLink to='/login'>Login</ActiveLink></li>
+                        {user ? <li className='font-extrabold'><ActiveLink to='/login'>Logout</ActiveLink></li>
+                            : <li className='font-extrabold'><ActiveLink to='/login'>Login</ActiveLink></li>}
                         <li className='font-extrabold'><ActiveLink to='/register'>Register</ActiveLink></li>
+                        <li>Name:{user?.displayName}</li>
                         <li>
                             <div className="navbar-end">
                                 <div className="w-10 rounded-full">
