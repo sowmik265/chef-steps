@@ -11,29 +11,30 @@ import Home from './components/Home.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
+import AuthProvider from './providers/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
       {
-        path:'/',
-        element:<Home></Home>,
+        path: '/',
+        element: <Home></Home>,
         loader: () => fetch('http://localhost:5000/chefsdetails')
       },
       {
         path: 'blog',
-        element:<Blog></Blog>,
+        element: <Blog></Blog>,
       },
       {
-        path:'login',
-        element:<Login></Login>
+        path: 'login',
+        element: <Login></Login>
       },
       {
-        path:'register',
-        element:<Register></Register>
+        path: 'register',
+        element: <Register></Register>
       }
     ]
   },
@@ -41,6 +42,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )
