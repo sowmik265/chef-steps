@@ -18,7 +18,8 @@ const Header = () => {
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li className='font-extrabold'><ActiveLink to='/'>Home</ActiveLink></li>
                             <li className='font-extrabold'><ActiveLink to='/blog'>Blog</ActiveLink></li>
-                            <li className='font-extrabold'><ActiveLink to='/login'>Login</ActiveLink></li>
+                            {user ? <li className='font-extrabold'><button><ActiveLink to='/login'>Logout</ActiveLink></button></li>
+                                : <li className='font-extrabold'><button><ActiveLink to='/login'>Login</ActiveLink></button></li>}
                             <li className='font-extrabold'><ActiveLink to='/register'>Register</ActiveLink></li>
                             <li>
                                 <div className="navbar-end">
@@ -35,8 +36,8 @@ const Header = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li className='font-extrabold'><ActiveLink to='/'>Home</ActiveLink></li>
                         <li className='font-extrabold'><ActiveLink to='/blog'>Blog</ActiveLink></li>
-                        {user ? <li className='font-extrabold'><ActiveLink to='/login'>Logout</ActiveLink></li>
-                            : <li className='font-extrabold'><ActiveLink to='/login'>Login</ActiveLink></li>}
+                        {user ? <li className='font-extrabold'><button><ActiveLink to='/login'>Logout</ActiveLink></button></li>
+                            : <li className='font-extrabold'><button><ActiveLink to='/login'>Login</ActiveLink></button></li>}
                         <li className='font-extrabold'><ActiveLink to='/register'>Register</ActiveLink></li>
                         <li>Name:{user?.displayName}</li>
                         <li>
