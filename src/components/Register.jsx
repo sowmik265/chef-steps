@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser ,user } = useContext(AuthContext)
 
     const handleUserRegister = (e) => {
         e.preventDefault();
@@ -23,7 +24,28 @@ const Register = () => {
                 console.log(error);
             })
 
+          updateUserData(name)
+
     }
+    const updateUserData =(user,name) =>{
+        updateProfile(user,{
+            displayName : name
+        })
+        .then(()=>{
+            console.log('user name updated')
+        })
+        .catch(error=>{
+            console.log(error)
+        }
+            )
+    }
+   
+
+    // const[user,SetUser] = useState(null)
+
+    // useEffect(()=>{
+    //     SetUser(updateUserData)
+    // },[])
 
     return (
         <div>
