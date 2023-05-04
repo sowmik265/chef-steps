@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
-import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
-import app from '../firebase/firebase.config';
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext)
+    const { signIn, googleLogIn, gitHubLogIn, user } = useContext(AuthContext)
 
     const handleUserLogin = (e) => {
         e.preventDefault();
@@ -25,12 +23,8 @@ const Login = () => {
             })
     }
 
-    const auth = getAuth(app);
-    const googleProvider = new GoogleAuthProvider();
-    const gitHubProvider = new GithubAuthProvider();
-
     const handleLogInGoogle = () => {
-        signInWithPopup(auth, googleProvider)
+        googleLogIn()
             .then(result => {
                 const user = result.user
                 console.log(user)
@@ -41,15 +35,15 @@ const Login = () => {
     }
 
     const handleLogInGitHub = () => {
-        signInWithPopup(auth, gitHubProvider)
-        .then(result=>{
-            const loggedUser = result.user;
-            console.log(loggedUser)
+        gitHubLogIn()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
 
-        })
-        .catch(error =>{
-            console.log(error)
-        })
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
     }
 

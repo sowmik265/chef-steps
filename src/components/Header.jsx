@@ -12,7 +12,6 @@ const Header = () => {
             .catch(error => console.log(error))
     }
 
-    // console.log(user)
     return (
         <div>
             <div className="navbar bg-yellow-400">
@@ -24,16 +23,21 @@ const Header = () => {
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li className='font-extrabold'><ActiveLink to='/'>Home</ActiveLink></li>
                             <li className='font-extrabold'><ActiveLink to='/blog'>Blog</ActiveLink></li>
-                            {user ? <li className='font-extrabold'><button><ActiveLink to='/login'>Logout</ActiveLink></button></li>
-                                : <li className='font-extrabold'><button><ActiveLink to='/login'>Login</ActiveLink></button></li>}
+                            <li className='font-extrabold'><ActiveLink to='/login'>Login</ActiveLink></li>
                             <li className='font-extrabold'><ActiveLink to='/register'>Register</ActiveLink></li>
-                            <li>
-                                <div className="navbar-end">
-                                    <div className="w-10 rounded-full">
-                                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                                    </div>
+                            {
+                                user &&
+                                <div className='flex'>
+                                    <li>
+                                        <div className="navbar-end">
+                                            <div className="w-24 rounded-full">
+                                                <img className='image-full rounded-full' src={user?.photoURL} title={user?.displayName} />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className='font-extrabold'><button onClick={handleLogOut}><ActiveLink>Logout</ActiveLink></button></li>
                                 </div>
-                            </li>
+                            }
                         </ul>
                     </div>
                     <a className="btn btn-ghost normal-case text-xl">chefSteps</a>
@@ -42,17 +46,21 @@ const Header = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li className='font-extrabold'><ActiveLink to='/'>Home</ActiveLink></li>
                         <li className='font-extrabold'><ActiveLink to='/blog'>Blog</ActiveLink></li>
-                        {user ? <li className='font-extrabold'><button onClick={handleLogOut}><ActiveLink to='/login'>Logout</ActiveLink></button></li>
-                            : <li className='font-extrabold'><button><ActiveLink to='/login'>Login</ActiveLink></button></li>}
+                        <li className='font-extrabold'><ActiveLink to='/login'>Login</ActiveLink></li>
                         <li className='font-extrabold'><ActiveLink to='/register'>Register</ActiveLink></li>
-                        <li>Name:{user?.email}</li>
-                        <li>
-                            <div className="navbar-end">
-                                <div className="w-10 rounded-full">
-                                    <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                                </div>
+                        {
+                            user &&
+                            <div className='flex'>
+                                <li>
+                                    <div className="navbar-end">
+                                        <div className="w-24 rounded-full">
+                                            <img className='image-full rounded-full' src={user?.photoURL} title={user?.displayName} />
+                                        </div>
+                                    </div>
+                                </li>
+                                <li className='font-extrabold'><button onClick={handleLogOut}><ActiveLink>Logout</ActiveLink></button></li>
                             </div>
-                        </li>
+                        }
                     </ul>
                 </div>
 
