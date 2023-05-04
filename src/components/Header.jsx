@@ -4,7 +4,13 @@ import ActiveLink from './ActiveRoutes/ActiveLink';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(error => console.log(error))
+    }
 
     // console.log(user)
     return (
@@ -36,10 +42,10 @@ const Header = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li className='font-extrabold'><ActiveLink to='/'>Home</ActiveLink></li>
                         <li className='font-extrabold'><ActiveLink to='/blog'>Blog</ActiveLink></li>
-                        {user ? <li className='font-extrabold'><button><ActiveLink to='/login'>Logout</ActiveLink></button></li>
+                        {user ? <li className='font-extrabold'><button onClick={handleLogOut}><ActiveLink to='/login'>Logout</ActiveLink></button></li>
                             : <li className='font-extrabold'><button><ActiveLink to='/login'>Login</ActiveLink></button></li>}
                         <li className='font-extrabold'><ActiveLink to='/register'>Register</ActiveLink></li>
-                        <li>Name:{user?.displayName}</li>
+                        <li>Name:{user?.email}</li>
                         <li>
                             <div className="navbar-end">
                                 <div className="w-10 rounded-full">
