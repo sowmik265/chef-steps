@@ -23,12 +23,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/chefsdetails')
+        loader: () => fetch('https://chefsteps-server-sowmik265.vercel.app/chefsdetails')
       },
       {
         path:'chef-details/:chefId',
         element:<ChefDetails></ChefDetails>,
-        loader: () => fetch('http://localhost:5000/chefsdetails')
+        loader: () => fetch('https://chefsteps-server-sowmik265.vercel.app/chefsdetails')
       },
       {
         path: 'blog',

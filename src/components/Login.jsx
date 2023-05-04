@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import app from '../firebase/firebase.config';
 
 const Login = () => {
 
@@ -22,6 +24,20 @@ const Login = () => {
                 console.log(error);
             })
     }
+
+    const auth = getAuth(app);
+    const provider =new GoogleAuthProvider();
+    const handleLogInGoogle = () =>{
+        signInWithPopup(auth,provider)
+        .then(result => {
+            const user = result.user
+            console.log(user)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     return (
         <div>
 
@@ -84,6 +100,7 @@ const Login = () => {
                     </div>
                     <div className="flex mt-4 gap-x-2">
                         <button
+                        onClick={handleLogInGoogle}
                             type="button"
                             className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-violet-600"
                         >
