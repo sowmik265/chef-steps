@@ -1,15 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
-import { updateProfile } from 'firebase/auth';
+
 
 const Register = () => {
-    const { createUser ,user } = useContext(AuthContext)
+    const { createUser, userDataUp, } = useContext(AuthContext)
+    const [error,setError] = useState('');
 
     const handleUserRegister = (e) => {
+        
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
 
@@ -19,33 +22,28 @@ const Register = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser)
+                updateUserData(result.user, name)
             })
             .catch(error => {
                 console.log(error);
+                setError(error.message)
             })
 
-          updateUserData(name)
+
 
     }
-    const updateUserData =(user,name) =>{
-        updateProfile(user,{
-            displayName : name
-        })
-        .then(()=>{
-            console.log('user name updated')
-        })
-        .catch(error=>{
-            console.log(error)
-        }
+
+
+    const updateUserData = (name) => {
+        userDataUp(name)
+            .then(() => {
+                console.log('user name updated')
+            })
+            .catch(error => {
+                console.log(error)
+            }
             )
     }
-   
-
-    // const[user,SetUser] = useState(null)
-
-    // useEffect(()=>{
-    //     SetUser(updateUserData)
-    // },[])
 
     return (
         <div>
@@ -68,6 +66,23 @@ const Register = () => {
                                 type="text"
                                 placeholder='Your name'
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                required
+                            />
+                        </div>
+
+                        <div className="mb-2">
+                            <label
+                                for="photo"
+                                className="block text-sm font-semibold text-gray-800"
+                            >
+                                Photo URL
+                            </label>
+                            <input
+                                name='photo'
+                                type="text"
+                                placeholder='Your photo URL'
+                                className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                required
                             />
                         </div>
                         <div className="mb-2">
@@ -82,6 +97,7 @@ const Register = () => {
                                 type="email"
                                 placeholder='Your email address'
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                required
                             />
                         </div>
                         <div className="mb-2">
@@ -96,7 +112,11 @@ const Register = () => {
                                 type="password"
                                 placeholder='Your password'
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                required
                             />
+                        </div>
+                        <div>
+                            <p>{error}</p>
                         </div>
                         <a
                             href="#"

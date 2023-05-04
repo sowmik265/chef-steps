@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { NavLink} from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Login = () => {
 
-    const { signIn, googleLogIn, gitHubLogIn, user } = useContext(AuthContext)
-
+    const { signIn, googleLogIn, gitHubLogIn, } = useContext(AuthContext);
+    const [error,setError] =useState('')
+    
     const handleUserLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -20,6 +21,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                setError(error.message)
             })
     }
 
@@ -88,6 +90,9 @@ const Login = () => {
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             />
                         </div>
+                        <div>
+                            <p>{error}</p>
+                        </div>
                         <a
                             href="#"
                             className="text-xs text-purple-600 hover:underline"
@@ -109,7 +114,8 @@ const Login = () => {
                     </div>
                     <div className="flex mt-4 gap-x-2">
                         <button
-                            onClick={handleLogInGoogle}
+                           
+                           onClick={handleLogInGoogle}
                             type="button"
                             className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-violet-600"
                         >

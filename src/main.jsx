@@ -14,6 +14,7 @@ import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import ChefDetails from './components/ChefDetails.jsx';
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,8 +27,8 @@ const router = createBrowserRouter([
         loader: () => fetch('https://chefsteps-server-sowmik265.vercel.app/chefsdetails')
       },
       {
-        path:'chef-details/:chefId',
-        element:<ChefDetails></ChefDetails>,
+        path: 'chef-details/:chefId',
+        element: <ChefDetails></ChefDetails>,
         loader: () => fetch('https://chefsteps-server-sowmik265.vercel.app/chefsdetails')
       },
       {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         path: 'register',
         element: <Register></Register>
       },
-      
+
     ]
   },
 ]);

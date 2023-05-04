@@ -40,16 +40,16 @@ const Header = () => {
                             }
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">chefSteps</a>
+                    <a className="btn btn-ghost  text-4xl font-bold text-blue-950">chefSteps</a>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li className='font-extrabold'><ActiveLink to='/'>Home</ActiveLink></li>
                         <li className='font-extrabold'><ActiveLink to='/blog'>Blog</ActiveLink></li>
-                        <li className='font-extrabold'><ActiveLink to='/login'>Login</ActiveLink></li>
+                        
                         <li className='font-extrabold'><ActiveLink to='/register'>Register</ActiveLink></li>
                         {
-                            user &&
+                            user ?
                             <div className='flex'>
                                 <li>
                                     <div className="navbar-end">
@@ -59,7 +59,8 @@ const Header = () => {
                                     </div>
                                 </li>
                                 <li className='font-extrabold'><button onClick={handleLogOut}><ActiveLink>Logout</ActiveLink></button></li>
-                            </div>
+                            </div> :
+                            <li className='font-extrabold'><ActiveLink to='/login'>Login</ActiveLink></li>
                         }
                     </ul>
                 </div>
